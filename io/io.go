@@ -17,6 +17,15 @@ func CreateDirIfNotExists(dirPath string) error {
 	return nil
 }
 
+func TruncateFile(filePath string) error {
+	err := os.Truncate(filePath, 0)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func WriteFile(filePath string, content []byte) error {
 	f, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 
